@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import SearchEngine from "./components/SearchEngine/index";
+import SearchEngine from "./components/SearchEngine";
 import Typography from '@mui/material/Typography';
 import { Box, Container} from '@mui/material';
 
@@ -17,7 +17,7 @@ interface HeaderProps {
     setMode: (value: boolean) => void;
     addTask: ({ taskName, taskDescription }: Omit<Task, 'id' | 'taskStatus'>) => void;
     searchTask: (text: string, filterType: string) => void;
-    filterTask: (type: string, searchText: string) => void;
+    filterTask: (type: string) => void;
 }
 
 const Header: FC<HeaderProps> = ({ 

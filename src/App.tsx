@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Main from "./components/Main/index";
 import { Container, Card, CardHeader } from '@mui/material';
 import { useEffect, useState } from 'react';
 import './App.css';
@@ -49,19 +49,19 @@ const App = () => {
     setMode(false);
   };
 
-  const searchTask = (text: string, filterType: string) => {
+  const searchTask = (searchText: string, filterType: string) => {
     const filteredTasks = filterType ? tasks : allTasks;   
-    if (text) {
+    if (searchText) {
       setTasks(
-        filteredTasks.filter((task) => task.taskName.toLowerCase().includes(text.toLowerCase()))
+        filteredTasks.filter((task) => task.taskName.toLowerCase().includes(searchText.toLowerCase()))
       );
     } else {
       setTasks(allTasks);
     }
   };
 
-  const filterTask = (type: string, searchText: string) => {
-    switch (type) {
+  const filterTask = (filterType: string) => {
+    switch (filterType) {
       case "All":
         setTasks(allTasks);
         break;
