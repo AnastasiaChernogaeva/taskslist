@@ -11,7 +11,7 @@ import AddingTaskForm from '../AddingTaskForm';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-import { Typography } from '@mui/material';
+import { Typography, Container } from '@mui/material';
 
 type Task = {
     id: number;
@@ -67,10 +67,10 @@ const SearchEngine: FC<SearchEngineProps> = ({
 
   return (
     <div>
-        <Paper
-        component="form"
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-        >
+    <Box>
+        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+       <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
         <IconButton sx={{ p: '10px' }} aria-label="menu"
                 aria-controls={open ? 'demo-positioned-menu' : undefined}
                 aria-haspopup="true"
@@ -103,11 +103,14 @@ const SearchEngine: FC<SearchEngineProps> = ({
             <AddOutlined  onClick={()=>setMode(true)} />
         </IconButton>
         </Paper>
-        <Box sx={{display: 'flex'}}>
-            <Typography sx={{flexL: 1}}> Выполнено: {countCompletedTasks}</Typography>
-            <Typography sx={{flex: -1 }}>не выполнено: {countUncompletedTasks}</Typography>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex'}}>
+            <Typography component="h1" variant="subtitle1" align="left" sx={{ flex: 1 }}>
+               Выполнено: {countCompletedTasks}
+            </Typography>
+            <Typography component="h1" variant="subtitle1" align="right" sx={{ flex: -1 }}>
+              Не выполнено: {countUncompletedTasks}
+            </Typography>
         </Box>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="horizontal" />
 
         <Box>        
             {addMode && <AddingTaskForm
@@ -116,6 +119,9 @@ const SearchEngine: FC<SearchEngineProps> = ({
                 />
             }
         </Box>
+      </Container>
+      </Container>
+      </Box>
     </div>
   );
 }
